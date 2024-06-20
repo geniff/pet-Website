@@ -1,0 +1,49 @@
+@model RegistrationViewModel
+@{
+    ViewData["Tittle"] = "Регистрация";
+}
+
+<div>
+    <body style="background-color: azure;">
+        <font size="2" color="black" face="Arial" align="center">
+            <form action ="/register" method="post">
+                <p>
+                    <label>Email</label>
+                    <input name ="Email" type="text" value="@Model.Email" />
+                    <div class="error"@Html.ValidationMessageFor(m => m.Email)</div>
+                </p>
+                <p>
+                    <label>Пароль</label>
+                    <input name ="Password" type="password" />
+                    <div class="error" @Html.ValidationMessageFor(m => m.Password)</div>
+                </p>
+                <div style="text-align: center;">
+                    <div class="g-recaptcha"
+                         data-sitekey="@ViewBag.CaptchaSitekey"
+                         style="display: inline-block;"></div>
+                    <div class="error">@Html.ValidationMessage("captcha")</div>
+                </div>
+                <button>Регистрация</button>
+            <p>
+                Пароль должен состоят из:</>
+            </p>
+            <p>
+                - Минимум 10 символов
+            </p>
+            <p>
+                - Хотя бы одна строчная буква
+            </p>
+            <p>
+                - Хотя бы одна заглавная буква
+            </p>
+            <p>
+                - Хотя бы один специальный символ</>
+            </p>
+            </form>
+        </font>
+    </body>
+</div>
+
+@section Scripts {
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+}

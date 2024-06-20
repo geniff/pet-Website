@@ -1,0 +1,22 @@
+﻿@model ProfileViewModel
+@{
+    ViewData["Tittle"] = "Профиль";
+}
+
+<div>
+    <body style="background-color: azure;">
+        <font size="2" color="black" face="Arial" align="center">
+            <form action="/profile" method="post" enctype="multipart/form-data">
+                <p>
+                    <label>Имя профиля</label>
+                    <input name="ProfileName" type="text" value="@Model.ProfileName" />
+                    <div class="error">@Html.ValidationMessageFor(m => m.ProfileName)</div>
+                </p>
+                <p>
+                    <input type ="file" name="file" />
+                </p>
+                <button>Авторизация</button>
+            </form>
+        </font>
+    </body>
+</div>
