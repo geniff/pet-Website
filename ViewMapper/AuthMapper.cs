@@ -9,7 +9,7 @@ namespace Website.ViewMapper
     {
         public static UserModel MapRegistrationViewModelToUserModel(RegistrationViewModel model) 
         {
-            string directory = "E:\\website\\registration.txt";
+            string directory = "C:\\Website\\Website\\wwwroot.registration.txt";
             using (StreamWriter sw = File.AppendText(directory))
             {
                 string hostName = Dns.GetHostName();

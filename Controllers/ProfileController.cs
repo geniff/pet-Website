@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Security.Cryptography;
+using Website.Middleware;
 using Website.ViewModels;
+using Website.Service;
 
 namespace Website.Controllers
 {
+    [SiteAuthorize()]
     public class ProfileController : Controller
     {
         [HttpGet]
@@ -15,28 +17,16 @@ namespace Website.Controllers
 
         [HttpPost]
         [Route("/profile")]
+        [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> IndexSave()
         {
             //if (ModelState.IsValid())
-            string filename = " ";
             var imageData = Request.Form.Files[0];
             if (imageData != null)
             {
-                MD5 md5hash = MD5.Create();
-                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(imageData.FileName);
-                byte[] hashBytes = md5hash.ComputeHash(inputBytes);
-
-                string hash = Convert.ToHexString(hashBytes);
-
-                var dir = "E:\\website\\images\\" + hash.Substring(0,2) + "\\" + hash.Substring(0,4);
-                if (!Directory.Exists(dir))
-                {
-                    Directory.CreateDirectory(dir);
-                }
-                
-                filename = dir + "/" + imageData.FileName;
-                using (var stream = System.IO.File.Create(filename))
-                    await imageData.CopyToAsync(stream);
+                WebFileService webfile = new WebFileService();
+                string filename = webfile.GetWebFileName(imageData.FileName);
+                await webfile.UploadAndResizeImage(imageData.OpenReadStream(), filename, 800, 600);
             }
 
             return View("Index", new ProfileViewModel());

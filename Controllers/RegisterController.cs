@@ -3,10 +3,11 @@ using Website.BL.Auth;
 using Microsoft.AspNetCore.Mvc;
 using Website.ViewModels;
 using Website.ViewMapper;
-using System.Collections.Generic;
 using Website.BL;
+using Website.Middleware;
 namespace Website.Controllers
 {
+    [SiteNotAuthorize()]
     public class RegisterController: Controller
     {
         private readonly IAuth authBL;

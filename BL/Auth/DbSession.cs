@@ -77,10 +77,16 @@ namespace Website.BL.Auth
             var data = await this.GetSession();
             return data.UserId != null;
         }
+
         public async Task Lock()
         {
             var data = await this.GetSession();
             await sessionDAL.Lock(data.DbSessionId);
+        }
+
+        public void ResetSessionCache()
+        {
+            sessionModel = null;
         }
     }
 }

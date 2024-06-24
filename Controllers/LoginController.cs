@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.IO;
 using Website.BL.Auth;
-using Website.ViewMapper;
+using Website.Middleware;
 using Website.ViewModels;
 
 namespace Website.Controllers
 {
+    [SiteNotAuthorize()]
     public class LoginController : Controller
     {
         private readonly IAuth authBL;
@@ -23,6 +23,7 @@ namespace Website.Controllers
 
         [HttpPost]
         [Route("/login")]
+        [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> IndexSave(LoginViewModel model)
         {
             if (ModelState.IsValid)

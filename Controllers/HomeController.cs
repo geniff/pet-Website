@@ -16,10 +16,9 @@ namespace Website.Controllers
             this.currentUser = currentUser;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var isLoggedIn = await currentUser.IsLoggedIn();
-            return View(isLoggedIn);
+            return View();
         }
 
         public IActionResult Privacy()

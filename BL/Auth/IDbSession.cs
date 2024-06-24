@@ -14,6 +14,8 @@ namespace Website.BL.Auth
         Task<bool> IsLoggedIn();
 
         Task Lock();
+
+        void ResetSessionCache();
     }
 }
 

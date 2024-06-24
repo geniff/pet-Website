@@ -20,11 +20,14 @@ namespace Website
             builder.Services.AddScoped<Website.BL.Auth.IAuth, Website.BL.Auth.Auth>();
             builder.Services.AddSingleton<Website.BL.Auth.IEncrypt, Website.BL.Auth.Encrypt>();
             builder.Services.AddScoped<Website.BL.Auth.ICurrentUser, Website.BL.Auth.CurrentUser>();
-            builder.Services.AddSingleton<Website.DAL.IAuthDAL, Website.DAL.AuthDAL>();
-            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            builder.Services.AddSingleton<Website.DAL.IDbSessionDAL, Website.DAL.DbSessionDAL>();
             builder.Services.AddScoped<Website.BL.Auth.IDbSession, Website.BL.Auth.DbSession>();
             builder.Services.AddScoped<Website.BL.General.IWebCookie, Website.BL.General.WebCookie>();
+
+            builder.Services.AddSingleton<Website.DAL.IAuthDAL, Website.DAL.AuthDAL>();
+            builder.Services.AddSingleton<Website.DAL.IUserTokenDAL, Website.DAL.UserTokenDAL>();
+            builder.Services.AddSingleton<Website.DAL.IDbSessionDAL, Website.DAL.DbSessionDAL>();
+
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             builder.Services.AddMvc();
 

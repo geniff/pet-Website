@@ -16,16 +16,16 @@
             options.HttpOnly = true;
             options.Path = "/";
             if (days > 0)
-                options.Expires = DateTimeOffset.UtcNow.AddDays(30);
+                options.Expires = DateTimeOffset.UtcNow.AddDays(days);
             httpContextAccessor?.HttpContext?.Response.Cookies.Append(cookieName, value, options);
         }
         
         public void Add(string cookieName, string value, int days = 0 )
         {
-            CookieOptions options = new CookieOptions();
+            CookieOptions options = new();
             options.Path = "/";
             if (days > 0)
-                options.Expires = DateTimeOffset.UtcNow.AddDays(30);
+                options.Expires = DateTimeOffset.UtcNow.AddDays(days);
             httpContextAccessor?.HttpContext?.Response.Cookies.Append(cookieName, value, options);
         }
 
