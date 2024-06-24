@@ -5,7 +5,7 @@ namespace Website.DAL
 {
     public class DbHelper
     {
-        public static string ConnString = "User ID=postgres;Password=xxx;Host=localhost;Port=5438;Database=test";
+        public static string ConnString = "User ID=postgres;Password=Egor2007;Host=localhost;Port=5438;Database=test";
 
         // Executes the query and returns a number
         public static async Task<int> ExecuteScalarAsync(string sql, object model)
