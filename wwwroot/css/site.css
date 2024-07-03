@@ -25,3 +25,45 @@ body {
 {
     color: red
 }
+
+.button:hover
+{
+    color: blue;
+    text-decoration: none;
+    background: #2980b9
+}
+
+.button {
+    font-style: normal;
+    text-transform: uppercase;
+    border: 0;
+    outline: none;
+    background: #3063AD;
+    display: inline-block;
+    border-radius: 0px;
+    padding: 4px 23px;
+    color: #fff;
+    cursor: pointer;
+    height: 36px;
+    line-height: 30px;
+    text-align: center;
+}
+
+input, button, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.form label
+{
+    display:block;
+}
+
+.form input {
+    width: 100%;
+}
+
+.form profileimage {
+    width: 100%;
+}

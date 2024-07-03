@@ -1,13 +1,12 @@
 ﻿using Website.ViewModels;
 using Website.DAL.Models;
-using System;
-using Website.BL.Auth;
 using System.Net;
+
 namespace Website.ViewMapper
 {
-    public class AuthMapper
+    public static class AuthMapper
     {
-        public static UserModel MapRegistrationViewModelToUserModel(RegistrationViewModel model) 
+        public static UserModel MapRegistrationViewModelToUserModel(RegistrationViewModel model)
         {
             string directory = "C:\\Website\\Website\\wwwroot.registration.txt";
             using (StreamWriter sw = File.AppendText(directory))
@@ -19,8 +18,9 @@ namespace Website.ViewMapper
             return new UserModel()
             {
                 Email = model.Email!,
-                Password = model.Password!,
+                Password = model.Password!
             };
         }
     }
 }
+

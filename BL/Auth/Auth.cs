@@ -1,6 +1,6 @@
-﻿using Website.BL.General;
+﻿using Website.DAL.Models;
 using Website.DAL;
-using Website.DAL.Models;
+using Website.BL.General;
 
 namespace Website.BL.Auth
 {

@@ -1,0 +1,24 @@
+﻿@model ScheduleViewModel
+@{
+    ViewData["Title"] = "Расписание";
+}
+<form id="scheduleForm">
+    <label for="day">День недели:</label>
+    <input type="text" id="day" name="day">
+
+    <label for="time">Время:</label>
+    <input type="text" id="time" name="time">
+
+    <label for="subject">Предмет:</label>
+    <input type="text" id="subject" name="subject">
+
+    <button type="submit">Добавить расписание</button>
+</form>
+
+<table id="scheduleTable">
+    <tr>
+        <th>День недели</th>
+        <th>Время</th>
+        <th>Предмет</th>
+    </tr>
+</table>

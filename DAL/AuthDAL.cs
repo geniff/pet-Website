@@ -29,8 +29,7 @@ namespace Website.DAL
         {
             string sql = @"insert into AppUser(Email, Password, Salt, Status)
                     values(@Email, @Password, @Salt, @Status) returning UserId";
-            var result = await DbHelper.QueryAsync<int>(sql, model);
-            return result.First();
+            return await DbHelper.QueryScalarAsync<int>(sql, model);
         }
     }
 }

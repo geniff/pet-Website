@@ -8,14 +8,14 @@ namespace Website.DAL
 {
     public class DbSessionDAL : IDbSessionDAL
     {
-        public async Task<int> Create(SessionModel model)
+        public async Task Create(SessionModel model)
         {
             using (var connection = new NpgsqlConnection(DbHelper.ConnString))
             {
                 string sql = @"insert into DbSession (DbSessionID, SessionData, Created, LastAccessed, UserId)
                       values (@DbSessionID, @SessionContent, @Created, @LastAccessed, @UserId)";
 
-                return await connection.ExecuteAsync(sql, model);
+                await connection.ExecuteAsync(sql, model);
             }
         }
 
@@ -33,14 +33,14 @@ namespace Website.DAL
 
         }
 
-        public async Task<int> Update(SessionModel model)
+        public async Task Update(SessionModel model)
         {
             string sql = @"update DbSession
                     set SessionData = @SessionData, LastAccessed = @LastAccessed, UserId = @UserId
                       where DbSessionID = @DbSessionID
             ";
 
-            return await DbHelper.ExecuteScalarAsync(sql, model);
+            await DbHelper.ExecuteAsync(sql, model);
         }
     }
 }

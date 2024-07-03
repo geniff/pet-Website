@@ -1,13 +1,19 @@
-﻿@model bool
+﻿@model IEnumerable<Website.DAL.Models.ProfileModel>
 
 @{
     ViewData["Title"] = "Домашняя страница";
 }
-<body style="background-color: azure;">
-    <font size="2" color="black" face="Arial" align="center">
-        <div class="text-center">
-            <h1 class="display-4">Добро пожаловать!</h1>
-            <p>О колледже <a href="https://spo-ket.ru">КЭТ Чижова</a>.</p>
-        </div>
-    </font>
-</body>
+
+<div class="text-center">
+    <h1 class="display-4">Добро пожаловать</h1>
+    <div class="row">
+        @foreach (var aboutofstudent in Model)
+        {
+            <div class="col-sm-4 col-md-3">
+                <a href="/aboutofstudent.ProfileId"><img src="@aboutofstudent.ProfileImage" class="profileimage" /></a>
+                <h3>@aboutofstudent.FirstName @aboutofstudent.LastName</h3>
+                <div>@aboutofstudent.ProfileName</div>
+            </div>
+        }
+    </div>
+</div>

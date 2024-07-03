@@ -11,14 +11,14 @@ namespace Website.DAL
             string sql = @"insert into UserToken (UserTokenID, UserId, Created)
                     values (@tockenid, @userid, NOW())";
 
-            await DbHelper.ExecuteScalarAsync(sql, new { userid = userid, tockenid = tockenid });
+            await DbHelper.ExecuteAsync(sql, new { userid = userid, tockenid = tockenid });
             return tockenid;
         }
 
         public async Task<int?> Get(Guid tokenid)
         {
-            string sql = @"select UserId from UserToken where UserTokenID = @tockenid";
-            return await DbHelper.ExecuteScalarAsync(sql, new { tockenid = tokenid });
+            string sql = @"select UserId from UserToken where UserTokenID = @tokenid";
+            return await DbHelper.QueryScalarAsync<int>(sql, new { tokenid = tokenid });
         }
     }
 }

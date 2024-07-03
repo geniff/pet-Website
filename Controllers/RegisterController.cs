@@ -5,6 +5,7 @@ using Website.ViewModels;
 using Website.ViewMapper;
 using Website.BL;
 using Website.Middleware;
+
 namespace Website.Controllers
 {
     [SiteNotAuthorize()]
@@ -39,7 +40,7 @@ namespace Website.Controllers
                 {
                     try
                     {
-                        await authBL.CreateUser(AuthMapper.MapRegistrationViewModelToUserModel(model));
+                        await authBL.Register(AuthMapper.MapRegistrationViewModelToUserModel(model));
                         return Redirect("/");
                     }
                     catch (DuplicateEmailException) 

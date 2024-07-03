@@ -1,4 +1,4 @@
-﻿namespace Website.Models;
+﻿namespace Website.ViewModels;
 
 public class ErrorViewModel
 {

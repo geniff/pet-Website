@@ -7,7 +7,7 @@ namespace Website.BL.Auth
     {
         Task<SessionModel> GetSession();
 
-        Task<int> SetUserId(int userId);
+        Task SetUserId(int userId);
 
         Task<int?> GetUserId();
 
